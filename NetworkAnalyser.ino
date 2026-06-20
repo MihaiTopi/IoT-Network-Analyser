@@ -27,7 +27,7 @@ byte numbers[10][7] = {
   {1, 1, 1, 1, 0, 1, 1}
 };
 
-// SNIFFER CALLBACK
+// Sniffer Callback
 void IRAM_ATTR sniffer_callback(void* buf, wifi_promiscuous_pkt_type_t type) {
   if (type != WIFI_PKT_MGMT && type != WIFI_PKT_DATA) return;
   wifi_promiscuous_pkt_t *pkt = (wifi_promiscuous_pkt_t *)buf;
@@ -41,7 +41,7 @@ void IRAM_ATTR sniffer_callback(void* buf, wifi_promiscuous_pkt_type_t type) {
   }
 }
 
-// STATE MANAGEMENT
+// State Management
 enum AppState { IDLE, DISCOVERING, SNIFFING, RESULTS };
 AppState currentState = IDLE;
 int lastButtonState = HIGH;
@@ -86,8 +86,7 @@ void loop() {
   }
 }
 
-// CORE FUNCTIONS
-
+// Core Functions
 void handleButton() {
   int btn = digitalRead(buttonPin);
   if (btn == LOW && lastButtonState == HIGH) {
